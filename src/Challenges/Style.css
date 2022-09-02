@@ -319,6 +319,8 @@
   box-shadow: 0 0 10px grey;
   position: relative;
   overflow: hidden;
+  margin-left: 12px;
+ 
 }
 
 .Em_Btn .Em-Btn1:hover {
@@ -1177,3 +1179,18 @@ tbody tr td{
 
 
 /* ********************************* / Media ***************************************** */
+
+
+/* ********************************** /textarea ************************************** */
+
+.itstextarea{
+  resize: none;
+  width: 400px;
+  border: none;
+  background-color: #e5e5e5;
+  border-radius: 20px;
+  padding: 10px;
+  outline: none;
+  height: 200px;
+  margin-left: 30px;
+}

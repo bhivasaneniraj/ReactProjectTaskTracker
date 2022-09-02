@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function LoginD(props) {
 
-   
 
-    const [errPsw, seterrPsw] = useState('none');
-    const [err, seterr] = useState('none');
+     const [errPsw, seterrPsw] = useState('none');
+     const [err, seterr] = useState('none');
 
-    // const navigate = useNavigate();
-
+     const navigate = useNavigate();
 
 
-    // var emp = 'NirajBhivasane';
-    // // var emp = 'JayendraYadav';
-    // // var emp = 'ShubhamRai';
-    // var man ='RiddhiMadhu';
+
+    //  var emp = 'NirajBhivasane';
+    //  var emp = 'JayendraYadav';
+    //  var emp = 'ShubhamRai';
+    //  var man ='RiddhiMadhu';
   
-    // var empPsw = 'niraj46';
-    // var manPsw = 'riddhi@123';
+    //  var empPsw = 'niraj46';
+    //  var manPsw = 'riddhi@123';
 
 //     console.log(response);
 // } catch (error) {
@@ -28,21 +27,28 @@ function LoginD(props) {
 
 
 
+
     async function loginUser() {
+        
         try {
+          
           const response = await axios.post('http://localhost:8089/login', {
-            "userName": "RIDDHI MADHU",
-            "password": "RIDHI111"
+            "userName": props.num,
+            "password": props.Password
         });
-           console.log(response);
-              } catch (error) {
-                console.error(error);
-               seterrPsw('block')
-  
-    }
-    
-            
-           
+if(response.data.authorities[0].authority=='ROLE_EMPLOYEE'){
+    navigate('/Employe')
+}else if(response.data.authorities[0].authority=='ROLE_MANAGER'){
+    navigate('/manegar')
+}else{
+    navigate('/login')
+}
+        } catch (error) {
+            seterrPsw('block')
+          console.error(error);
+        }
+      }
+
     // const Submit = () => {
     //     props.setnum('')
     //     props.setPassword('')
@@ -96,8 +102,8 @@ function LoginD(props) {
                             <label> Enter Password </label>
                         </div>
                         <div className="err_msg">
-                            <h3 style={{ display: err }}>  Please Enter Correct Username</h3>
-                            <h3 style={{ display: errPsw }}> Please Enter Correct Password </h3>
+                            {/* <h3 style={{ display: err }}>  Please Enter Correct Username</h3> */}
+                            <h3 style={{ display: errPsw }}> Please Enter Valid Credential. </h3>
                         </div>
                         <button onClick={loginUser}>  Submit </button>
                     </div>

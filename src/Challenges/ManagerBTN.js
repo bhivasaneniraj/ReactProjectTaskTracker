@@ -4,12 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function ManagerBTN() {
+ 
+  // async function getDetails() {
+  //   try {
+  //     const response = await axios.get('http://localhost:8089/task/currentdate');
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
 
     const navigate1 = useNavigate();
     const navigate2 = useNavigate();
 
   const submitTask = () =>{
-    navigate1('/manegartask')
+    navigate1('/Employe')
   }
 
   const ViewTask = () =>{
@@ -29,7 +38,7 @@ function ManagerBTN() {
             <div className="manegarBTN">
                 <div className="manegar">
                     <div className="button">
-                        <button className='btn1' onClick={getDetails()}>View Task Details <i class="fa-solid fa-arrow-right-long arrowI"></i> </button> 
+                        <button className='btn1' onClick={ViewTask}>View Task Details <i class="fa-solid fa-arrow-right-long arrowI"></i> </button> 
                         <button className='btn2' onClick={submitTask} >Add Task <i class="fa-solid fa-arrow-right-long arrowI"></i></button>
                     </div>
                 </div>
@@ -39,6 +48,7 @@ function ManagerBTN() {
 }
 
 export default ManagerBTN
+
 
 
 
